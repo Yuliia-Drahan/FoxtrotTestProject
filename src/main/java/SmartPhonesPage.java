@@ -3,6 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class SmartPhonesPage {
 
@@ -18,13 +19,14 @@ public class SmartPhonesPage {
     private By basketTooltip = By.xpath("//div[@id='cartTooltip']");
     private By checkOutButton = By.xpath("//a[text()='Оформить заказ']");
     private By basketItems = By.xpath("//div[@class='header-tooltip__cards-item__body']");
-
+    private By closeBasket = By.xpath("//i[@id='cartTooltipClose']");
     public String getHeadingText(){
         return driver.findElement(heading).getText();
     }
 
     public SmartPhonesPage clickBuyPhone(String phoneName){
         driver.findElement(By.xpath(String.format(phone, phoneName))).click();
+//        driver.findElement(closeBasket).click();
         return this;
     }
 
@@ -47,7 +49,6 @@ public class SmartPhonesPage {
         List<WebElement> elements = driver.findElements(basketItems);
         Integer numberOfItems = elements.size();
         return numberOfItems;
-
     }
 
 }
