@@ -1,5 +1,6 @@
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.junit.Assert;
 
@@ -12,8 +13,8 @@ public class FoxtrotMainPageTest {
 
     @Before
     public void setUp(){
-        System.setProperty("webdriver.gecko.driver","C:\\Users\\user\\IdeaProjects\\FoxtrotTestProject\\drivers\\geckodriver.exe");
-        driver = new FirefoxDriver();
+        System.setProperty("webdriver.chrome.driver","C:\\Users\\user\\IdeaProjects\\FoxtrotTestProject\\drivers\\chromedriver.exe");
+        driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get("https://www.foxtrot.com.ua/");
@@ -22,9 +23,9 @@ public class FoxtrotMainPageTest {
 
     @Test
     public void openMenuBarTest(){
-        foxtrotMainPage.expandPhoneMenu();
+      foxtrotMainPage.expandPhoneMenu();
         Boolean result = foxtrotMainPage.checkPhoneMenuDisplayed();
-        Assert.assertTrue(result);
+       Assert.assertTrue(result);
     }
 
     @Test

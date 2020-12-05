@@ -13,36 +13,18 @@ public class SmartPhonesPage {
     }
 
     private By heading = By.xpath("//div[contains(@class, 'page__title')]/h1");
-    private By okButton = By.xpath("//input[@class='listing__sidebar-range-submit button']");
-    private By samsungCheckBox = By.xpath("//input[@data-property-title='SAMSUNG']");
-    private By samsungCheckBoxChecked = By.xpath("//input[@data-property-title='SAMSUNG']/following-sibling::label");
-    private String samsungPhone = "//div[@data-product-title='%s']";
-    private By basketIcon = By.xpath("//i[@class='header-basket__icon icon-shop js-toggle-tooltip tooltip-link_open']");
+    private String phone = "//div[@data-product-title='%s']";
+    private By basketIcon = By.xpath("//div[@class='header-basket']");
     private By basketTooltip = By.xpath("//div[@id='cartTooltip']");
     private By checkOutButton = By.xpath("//a[text()='Оформить заказ']");
-    private By basketItems = By.xpath("//div[@class='header-tooltip__cards-item analytics-data main-product ']");
+    private By basketItems = By.xpath("//div[@class='header-tooltip__cards-item__body']");
 
     public String getHeadingText(){
         return driver.findElement(heading).getText();
     }
 
-    public SmartPhonesPage chooseSamsungCheckBox(){
-        driver.findElement(samsungCheckBox).click();
-        return this;
-    }
-
-    public Boolean checkCheckBoxIsChecked(){
-        Boolean checked = driver.findElement(samsungCheckBoxChecked).isSelected();
-        return checked;
-    }
-
-    public SmartPhonesPage clickOkButton(){
-        driver.findElement(okButton).click();
-        return this;
-    }
-
     public SmartPhonesPage clickBuyPhone(String phoneName){
-        driver.findElement(By.xpath(String.format(samsungPhone, phoneName)));
+        driver.findElement(By.xpath(String.format(phone, phoneName))).click();
         return this;
     }
 
@@ -62,7 +44,7 @@ public class SmartPhonesPage {
     }
 
     public Integer checkItemsInBasket(){
-        List<WebElement> elements = driver.findElements(By.xpath("//div[@class='header-tooltip__cards-item analytics-data main-product ']"));
+        List<WebElement> elements = driver.findElements(basketItems);
         Integer numberOfItems = elements.size();
         return numberOfItems;
 
