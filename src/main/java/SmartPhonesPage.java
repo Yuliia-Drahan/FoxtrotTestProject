@@ -19,7 +19,7 @@ public class SmartPhonesPage {
     private By basketTooltip = By.xpath("//div[@id='cartTooltip']");
     private By checkOutButton = By.xpath("//a[text()='Оформить заказ']");
     private By basketItems = By.xpath("//div[@class='header-tooltip__cards-item__body']");
-    private By closeBasket = By.xpath("//i[@id='cartTooltipClose']");
+//    private By closeBasket = By.xpath("//i[@id='cartTooltipClose']");
     public String getHeadingText(){
         return driver.findElement(heading).getText();
     }
